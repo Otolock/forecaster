@@ -1,7 +1,6 @@
 /**
  * Represents a geographic coordinate.
  */
-
 class Coordinates {
 	/**
 	 * Create a coordinate
@@ -10,21 +9,23 @@ class Coordinates {
 	 */
 	constructor(latitude, longitude) {
 		/* Throw an error if latitude or longitude are not Numbers */
-		if (isNaN(this.latitude) || isNaN(this.longitude)) {
-			throw 'One or both parameters is not a number.';
+		if (isNaN(latitude) || isNaN(longitude)) {
+			throw new SyntaxError('One or both parameters is not a number.');
 		}
 		
 		/* Throw an error if latitude exceeds the maximum range [-90, 90] */
-		if (this.latitude < -90 || this.latitude > 90) {
-			throw 'Latitude exceeds maximum range.'
+		if (latitude < -90 || latitude > 90) {
+			throw new RangeError('Latitude exceeds maximum range.');
 		}
 
 		/* Throw an error if longitude exceeds the maximum range [-180, 180] */
-		if (this.longitude < -180 || this.longitude > 180) {
-			throw 'Longitude exceeds maximum range.'
+		if (longitude < -180 || longitude > 180) {
+			throw new RangeError('Longitude exceeds maximum range.');
 		}
 
 		this.latitude = latitude;
 		this.longitude = longitude
 	}
 }
+
+module.exports = Coordinates;
