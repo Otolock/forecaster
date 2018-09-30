@@ -8,7 +8,7 @@ class Forecast {
 	 * @param {string} address - The location weather is being displayed for.
 	 * @param {number} precipitation - The chance of rain.
 	 * @param {number} windSpeed - The current wind speed.
-	 * @param {string} windDirection - The direction the wind is blowing.
+	 * @param {number} windDirection - The direction the wind is blowing in degrees.
 	 * @param {string} summary - A summary of the current weather conditions.
 	 * @param {number} high - The day's high temperatue.
 	 * @param {number} low - The day's low temperature.
@@ -39,8 +39,8 @@ class Forecast {
 			throw new SyntaxError('address is not a String.');
 		}
 
-		if (!isString(windDirection)) {
-			throw new SyntaxError('windDirection is not a String.');
+		if (!isNumber(windDirection)) {
+			throw new SyntaxError('windDirection is not a Number.');
 		}
 
 		if (!isString(summary)) {
@@ -51,7 +51,7 @@ class Forecast {
 		this.address = address;
 		this.precipitation = precipitation;
 		this.windSpeed = windSpeed;
-		this.windDirection = windDirection;
+		this.windDirection = degreesToCompass(windDirection);
 		this.summary = summary;
 		this.high = high;
 		this.low = low;
@@ -72,6 +72,12 @@ function isNumber(value) {
  */
 function isString(value) {
 	return typeof value === 'string' || value instanceof String;
+}
+
+/* Snippet taken from https://stackoverflow.com/a/48750814 */
+function degreesToCompass(angle) {
+	let directions = ['N', 'NW', 'W', 'SW', 'S', 'SE', 'E', 'NE'];
+	return directions[Math.round(((angle %= 360) < 0 ? angle + 360 : angle) / 45) % 8];
 }
 
 module.exports = Forecast;
