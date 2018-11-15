@@ -1,0 +1,19 @@
+{
+  "name": "simple-weather",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Antonio Santos",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.3",
+    "gocoder": "^2.0.1",
+    "request": "^2.88.0"
+  }
+}
