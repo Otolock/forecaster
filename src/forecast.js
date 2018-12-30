@@ -7,13 +7,14 @@ class Forecast {
 	 * @param {number} temperature - The current temperature
 	 * @param {string} address - The location weather is being displayed for.
 	 * @param {number} precipitation - The chance of rain.
+	 * @param {string} icon - The icon that describes the current weather.
 	 * @param {number} windSpeed - The current wind speed.
 	 * @param {number} windDirection - The direction the wind is blowing in degrees.
 	 * @param {string} summary - A summary of the current weather conditions.
 	 * @param {number} high - The day's high temperatue.
 	 * @param {number} low - The day's low temperature.
 	 */
-	constructor(temperature, address, precipitation, windSpeed, windDirection, summary, high, low) {
+	constructor(temperature, address, precipitation, icon, windSpeed, windDirection, summary, high, low) {
 		/* The following if statements verify that the given arguments are valid. */
 		if (!isNumber(temperature)) {
 			throw new SyntaxError('temperature is not a Number.');
@@ -21,6 +22,10 @@ class Forecast {
 
 		if (!isNumber(precipitation)) {
 			throw new SyntaxError('precipitation is not a Number.');
+		}
+
+		if (!isString(icon)) {
+			throw new SyntaxError('icon is not a String');
 		}
 
 		if (!isNumber(windSpeed)) {
@@ -50,6 +55,7 @@ class Forecast {
 		this.temperature = temperature;
 		this.address = address;
 		this.precipitation = precipitation;
+		this.icon = icon;
 		this.windSpeed = windSpeed;
 		this.windDirection = degreesToCompass(windDirection);
 		this.summary = summary;

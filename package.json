@@ -12,8 +12,8 @@
   "author": "Antonio Santos",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.16.3",
-    "gocoder": "^2.0.1",
+    "express": "^4.16.4",
+    "gocoder": "^3.0.0",
     "request": "^2.88.0"
   }
 }
